@@ -5,14 +5,36 @@
     <vendor>lectricas</vendor>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
+    <depends>org.jetbrains.kotlin</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.lectricas.cognitivecomplexity.services.MyApplicationService"/>
+        <applicationService
+                serviceImplementation="com.github.lectricas.cognitivecomplexity.services.MyApplicationService"/>
         <projectService serviceImplementation="com.github.lectricas.cognitivecomplexity.services.MyProjectService"/>
+        <notificationGroup id="Custom Notification Group" displayType="BALLOON" key="notification.group.name"/>
     </extensions>
 
     <applicationListeners>
         <listener class="com.github.lectricas.cognitivecomplexity.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
+    <actions>
+        <action id="com.github.lectricas.cognitivecomplexity.actions.ShowCurrentMethodNameAction"
+                class="com.github.lectricas.cognitivecomplexity.actions.ShowCurrentMethodNameAction"
+                text="Show current Method"
+                description="Show current method action">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
+        <action id="com.github.lectricas.cognitivecomplexity.actions.ShowProjectNameAction"
+                class="com.github.lectricas.cognitivecomplexity.actions.ShowProjectNameAction"
+                text="ShowProjectNameActoin" description="Shows project name">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
+        <action id="com.github.lectricas.cognitivecomplexity.actions.ShowFileExtensionNameAction"
+                class="com.github.lectricas.cognitivecomplexity.actions.ShowFileExtensionNameAction"
+                text="ShowFileExtensionAction" description="Shows file extension">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
+    </actions>
 </idea-plugin>
